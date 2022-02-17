@@ -1,0 +1,13 @@
+---
+- name: Play 1
+  hosts: localhost
+  become: true  
+  tasks:
+  - name: Execute date command 
+    command: date
+
+  - name: Install apache2
+    apt:
+     name: apache2
+     state: present
+     

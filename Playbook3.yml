@@ -1,0 +1,11 @@
+---
+- name: Playbook 3
+  hosts: localhost
+  become: yes
+  tasks:
+  - name: Java
+    get_url:
+        url: "https://www.poweriso.com/poweriso-x64-1.1.tar.gz"
+        dest: /home/dorian/Desktop/Ansible/Folder2/
+        mode: 0755
+        

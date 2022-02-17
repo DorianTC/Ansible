@@ -1,0 +1,15 @@
+---
+- name: Playbook5
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Change permisions
+      file:
+        path: /home/dorian/Desktop/Ansible/Folder2
+        state: directory
+        recurse: yes
+        owner: dorian
+        mode: 0777
+
+
+

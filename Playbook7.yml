@@ -1,0 +1,24 @@
+---
+- name: Create directory
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Include vars
+      include_vars:
+          file: settings.yaml
+          name: settings
+
+    - name: Create local directory "nfs-ansible"
+      file:
+        path: ./nfs-ansible
+        state: directory
+      
+    - name: Mount share from nfs-server
+      become: yes
+      ansible.posix.mount:
+        src: "{{ hostvars[nfs_server0].ipaddress }}:/nfs-share"
+        path: ./nfs-ansible
+        state: mounted
+        fstype: nfs
+      vars:
+        nfs_server0: '{{ groups["nfs-server"] | first }}'

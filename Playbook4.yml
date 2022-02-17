@@ -1,0 +1,29 @@
+---
+- name: Playbook4
+  hosts: localhost
+  become: yes
+  tasks: 
+  - name: Create folder 
+    file:
+        path: /home/dorian/Desktop/Ansible/Arhiva java/
+        state: directory
+
+  - name: Folder permisions
+    file:
+      path: /home/dorian/Desktop/Ansible/Arhiva java/
+      state: directory
+      mode: 0755
+
+  - name: Copy archive 
+    copy:
+      src: /home/dorian/Downloads/jdk-16.0.2_linux-aarch64_bin (2).tar.gz
+      dest: /home/dorian/Desktop/Ansible/Arhiva java/
+
+  - name: Archive permissions
+    file:
+      path: /home/dorian/Desktop/Ansible/Arhiva java/
+      state: directory
+      recurse: yes
+      owner: dorian 
+      mode: 0776
+

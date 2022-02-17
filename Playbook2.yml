@@ -1,0 +1,31 @@
+---
+- name: Playbook 2
+  hosts: localhost
+  become: true
+  tasks:
+  - name: Create folder
+    file:
+      path: /home/dorian/Desktop/Ansible/Folder1/
+
+      state: directory
+
+  - name: Remove folder
+    file:
+      path: /home/dorian/Desktop/Ansible/Folder1/
+      state: absent
+
+  - name: Create another folder and permisions
+
+    file:
+      path: /home/dorian/Desktop/Ansible/Folder2/
+      state: directory
+
+  - name: Permisions
+
+    file:
+      path: /home/dorian/Desktop/Ansible/Folder2/
+      state: directory
+      owner: dorian
+      group: dorian
+      mode: 0766
+      
